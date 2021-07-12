@@ -48,7 +48,9 @@ public class MobileAccessibility extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mMobileAccessibilityHelper = new OreoMobileAccessibilityHelper();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mMobileAccessibilityHelper = new KitKatMobileAccessibilityHelper();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mMobileAccessibilityHelper = new JellyBeanMobileAccessibilityHelper();
@@ -76,6 +78,9 @@ public class MobileAccessibility extends CordovaPlugin {
                 return true;
             } else if(action.equals("updateTextZoom")) {
                 updateTextZoom(callbackContext);
+                return true;
+            } else if (action.equals("setFontScaleToOne")) {
+                mMobileAccessibilityHelper.setFontScaleToOne();
                 return true;
             }
         } catch (JSONException e) {

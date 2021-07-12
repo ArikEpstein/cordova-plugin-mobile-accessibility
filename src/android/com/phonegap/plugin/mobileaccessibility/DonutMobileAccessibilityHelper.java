@@ -29,6 +29,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.content.res.Configuration;
 
 import java.lang.IllegalAccessException;
 import java.lang.reflect.InvocationTargetException;
@@ -130,5 +131,12 @@ public class DonutMobileAccessibilityHelper extends
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setFontScaleToOne() {
+        Configuration config = mMobileAccessibility.cordova.getActivity().getResources().getConfiguration();
+        config.fontScale = 1;
+        mMobileAccessibility.cordova.getActivity().getResources().updateConfiguration(config, mMobileAccessibility.cordova.getActivity().getResources().getDisplayMetrics());
     }
 }

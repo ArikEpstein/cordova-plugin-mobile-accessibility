@@ -17,17 +17,25 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
+ */
 
 package com.phonegap.plugin.mobileaccessibility;
 
-import android.view.ViewParent;
+import android.accessibilityservice.AccessibilityServiceInfo;
+import android.annotation.TargetApi;
+import android.widget.Toast;
+import android.content.res.Configuration;
+import android.view.WindowManager;
+import android.util.DisplayMetrics;
+import android.content.Context;
 
-abstract class AbstractMobileAccessibilityHelper {
-    MobileAccessibility mMobileAccessibility;
-    ViewParent mParent;
-    public abstract void initialize(MobileAccessibility mobileAccessibility);
-    public abstract double getTextZoom();
-    public abstract void setTextZoom(double textZoom);
-    public abstract void setFontScaleToOne();
+@TargetApi(26)
+public class OreoMobileAccessibilityHelper extends
+    KitKatMobileAccessibilityHelper {
+  private Context mContext;
+  @Override
+  public void initialize(MobileAccessibility mobileAccessibility) {
+    super.initialize(mobileAccessibility);
+    mContext = mobileAccessibility.cordova.getActivity().getBaseContext();
+  }
 }

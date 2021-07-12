@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="phonegap-plugin-mobile-accessibility"
-    version="1.0.5">
+    version="1.0.9">
     <name>Mobile Accessibility</name>
     <description>PhoneGap Mobile Accessibility Plugin</description>
     <license>Apache 2.0</license>
@@ -15,6 +15,18 @@
     <js-module src="www/mobile-accessibility.js" name="mobile-accessibility">
         <clobbers target="window.MobileAccessibility" />
     </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MobileAccessibility">
+                <param name="ios-package" value="CDVMobileAccessibility" onload="true" />
+            </feature>
+        </config-file>
+        <framework src="MediaAccessibility.framework" weak="true" />
+        <header-file src="src/ios/CDVMobileAccessibility.h" />
+        <source-file src="src/ios/CDVMobileAccessibility.m" />
+    </platform>
 
     <!-- android -->
     <platform name="android">
@@ -30,6 +42,7 @@
         <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/IceCreamSandwichMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
         <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/JellyBeanMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
         <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/KitKatMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
+        <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/OreoMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
     </platform>
 
 </plugin>

@@ -1,29 +1,27 @@
 {
-  "author": {
-    "name": "Adobe PhoneGap Team"
-  },
-  "bundleDependencies": false,
+  "name": "phonegap-plugin-mobile-accessibility",
+  "description": "PhoneGap Mobile Accessibility Plugin",
+  "version": "1.0.9",
   "cordova": {
     "id": "phonegap-plugin-mobile-accessibility",
     "platforms": [
+      "ios",
       "android"
     ]
   },
-  "deprecated": false,
-  "description": "PhoneGap Mobile Accessibility Plugin",
+  "keywords": [
+    "phonegap",
+    "mobile accessibility",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
   "engines": [
     {
       "name": "cordova",
       "version": ">=3.0.0"
     }
   ],
-  "keywords": [
-    "phonegap",
-    "mobile accessibility",
-    "ecosystem:cordova",
-    "cordova-android"
-  ],
-  "license": "Apache 2.0",
-  "name": "phonegap-plugin-mobile-accessibility",
-  "version": "1.0.5"
+  "author": "Adobe PhoneGap Team",
+  "license": "Apache 2.0"
 }
