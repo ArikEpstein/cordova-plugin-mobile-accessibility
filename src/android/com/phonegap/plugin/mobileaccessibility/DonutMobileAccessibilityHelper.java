@@ -63,60 +63,7 @@ public class DonutMobileAccessibilityHelper extends
         mAccessibilityManager = (AccessibilityManager) mMobileAccessibility.cordova.getActivity().getSystemService(Context.ACCESSIBILITY_SERVICE);
     }
 
-    @Override
-    public boolean isClosedCaptioningEnabled() {
-        return false;
-    }
 
-    @Override
-    public boolean isScreenReaderRunning() {
-        return mAccessibilityManager.isEnabled();
-    }
-
-    @Override
-    public boolean isTouchExplorationEnabled() {
-        return false;
-    }
-
-    @Override
-    public void onAccessibilityStateChanged(boolean enabled) {
-        mMobileAccessibility.onAccessibilityStateChanged(enabled);
-    }
-
-    @Override
-    public void onCaptioningEnabledChanged(boolean enabled) {
-        mMobileAccessibility.onCaptioningEnabledChanged(enabled);
-    }
-
-    @Override
-    public void onTouchExplorationStateChanged(boolean enabled) {
-        mMobileAccessibility.onTouchExplorationStateChanged(enabled);
-    }
-
-    @Override
-    public void addStateChangeListeners() {
-    }
-
-    @Override
-    public void removeStateChangeListeners() {
-    }
-
-    @Override
-    public void announceForAccessibility(CharSequence text) {
-        if (!mAccessibilityManager.isEnabled()) {
-            return;
-        }
-
-        final int eventType = AccessibilityEvent.TYPE_VIEW_FOCUSED;
-        final AccessibilityEvent event = AccessibilityEvent.obtain(eventType);
-        event.getText().add(text);
-        event.setEnabled(mView.isEnabled());
-        event.setClassName(mView.getClass().getName());
-        event.setPackageName(mView.getContext().getPackageName());
-        event.setContentDescription(null);
-
-        mAccessibilityManager.sendAccessibilityEvent(event);
-    }
 
     @SuppressWarnings("deprecation")
     @Override

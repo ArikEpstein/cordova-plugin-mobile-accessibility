@@ -37,16 +37,4 @@ public class JellyBeanMobileAccessibilityHelper extends
         mParent = mView.getParentForAccessibility();
     }
 
-    @Override
-    public void announceForAccessibility(CharSequence text) {
-        if (mAccessibilityManager.isEnabled() && mParent != null) {
-            mAccessibilityManager.interrupt();
-            AccessibilityEvent event = AccessibilityEvent.obtain(
-                    AccessibilityEvent.TYPE_ANNOUNCEMENT);
-            mView.onInitializeAccessibilityEvent(event);
-            event.getText().add(text);
-            event.setContentDescription(null);
-            mParent.requestSendAccessibilityEvent(mView, event);
-        }
-    }
 }

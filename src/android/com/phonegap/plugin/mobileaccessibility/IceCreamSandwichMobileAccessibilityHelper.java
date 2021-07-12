@@ -36,25 +36,6 @@ public class IceCreamSandwichMobileAccessibilityHelper extends
     private AccessibilityStateChangeListener mAccessibilityStateChangeListener;
 
     @Override
-    public boolean isScreenReaderRunning() {
-        return mAccessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_SPOKEN).size() > 0;
-    }
-
-    @Override
-    public void addStateChangeListeners() {
-        if (mAccessibilityStateChangeListener == null) {
-            mAccessibilityStateChangeListener = new InternalAccessibilityStateChangeListener();
-        }
-        mAccessibilityManager.addAccessibilityStateChangeListener(mAccessibilityStateChangeListener);
-    }
-
-    @Override
-    public void removeStateChangeListeners() {
-        mAccessibilityManager.removeAccessibilityStateChangeListener(mAccessibilityStateChangeListener);
-        mAccessibilityStateChangeListener = null;
-    }
-
-    @Override
     public double getTextZoom() {
         double zoom = 100;
         try {
@@ -90,15 +71,6 @@ public class IceCreamSandwichMobileAccessibilityHelper extends
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }
-    }
-
-    private class InternalAccessibilityStateChangeListener
-        implements AccessibilityStateChangeListener {
-
-        @Override
-        public void onAccessibilityStateChanged(boolean enabled) {
-            mMobileAccessibility.onAccessibilityStateChanged(enabled);
         }
     }
 }
