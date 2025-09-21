@@ -43,6 +43,7 @@
         <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/JellyBeanMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
         <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/KitKatMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
         <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/OreoMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
+        <source-file src="src/android/com/phonegap/plugin/mobileaccessibility/BaklavaMobileAccessibilityHelper.java" target-dir="src/com/phonegap/plugin/mobileaccessibility" />
     </platform>
 
 </plugin>
